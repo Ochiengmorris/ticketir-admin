@@ -1,15 +1,10 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/components/useColorScheme";
+import SyncUserWithConvex from "@/components/SyncUserWithConvex";
 import ClerkAuthProvider from "@/utils/ClerkProvider";
 import ConvexClientProvider from "@/utils/ConvexProvider";
 import { Stack } from "expo-router";
@@ -53,16 +48,11 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
     <ClerkAuthProvider>
       <ConvexClientProvider>
-        <ThemeProvider
-          value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-        >
-          <Stack screenOptions={{ headerShown: false }} />
-        </ThemeProvider>
+        <SyncUserWithConvex />
+        <Stack screenOptions={{ headerShown: false }} />
       </ConvexClientProvider>
     </ClerkAuthProvider>
   );

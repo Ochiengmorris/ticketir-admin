@@ -13,7 +13,7 @@ const SyncUserWithConvex = () => {
       try {
         await updateUser({
           userId: user.id,
-          name: `${user.firstName ?? ""} ${user.lastName ?? ""}`.trim(),
+          name: `${user.firstName ?? user.username} ${user.lastName ?? ""}`.trim(),
           email: user.emailAddresses[0]?.emailAddress ?? "",
         });
       } catch (error) {

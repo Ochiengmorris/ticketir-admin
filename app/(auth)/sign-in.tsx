@@ -16,6 +16,9 @@ import React from "react";
 import {
   ActivityIndicator,
   Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
@@ -53,9 +56,11 @@ const SignIn = () => {
     if (!isLoaded) return;
     setIsLoadingGoogle(true);
     try {
-      const { createdSessionId, signIn, signUp, setActive } =
+      const { createdSessionId, signUp, signIn, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("/(tabs)/two", { scheme: "myapp" }),
+          redirectUrl: Linking.createURL("/(tabs)/two", {
+            scheme: "com.johnte.ticketradmin",
+          }),
         });
 
       // If sign in was successful, set the active session
@@ -66,8 +71,11 @@ const SignIn = () => {
         // for next steps, such as MFA
       }
     } catch (err) {
-      // See https://clerk.com/docs/custom-flows/error-handling
-      // for more info on error handling
+      const newError = JSON.parse(JSON.stringify(err, null, 2));
+      Alert.alert(
+        "Error",
+        newError?.errors?.[0]?.message || "An error occurred"
+      );
       console.error(JSON.stringify(err, null, 2));
     } finally {
       setIsLoadingGoogle(false);
@@ -116,236 +124,261 @@ const SignIn = () => {
         className="flex-1 "
         style={{ backgroundColor: COLORS.black }}
       >
-        <View>
-          <Text
-            style={{
-              marginTop: MARGIN.large,
-              fontSize: FONT_SIZE.heading * 1.5,
-              padding: PADDING.large,
-              fontWeight: "bold",
-              color: COLORS.white,
-            }}
-          >
-            Sign In
-          </Text>
-        </View>
-
-        {/* Sign in form */}
-        <View
-          style={{
-            marginTop: MARGIN.large,
-            padding: PADDING.large,
-            borderWidth: 1,
-            backgroundColor: COLORS.lightBlue,
-            borderTopEndRadius: BORDER_RADIUS.large * 2,
-            borderTopStartRadius: BORDER_RADIUS.large * 2,
-            flex: 1,
-          }}
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          style={{ flex: 1 }}
         >
-          <Text
-            style={{
-              fontSize: FONT_SIZE.large * 1.5,
-              fontWeight: "bold",
-              color: COLORS.black,
-            }}
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            keyboardShouldPersistTaps="handled"
           >
-            Welcome Back
-          </Text>
-          <Text
-            style={{
-              fontSize: FONT_SIZE.medium,
-              marginTop: MARGIN.small,
-              color: COLORS.black,
-            }}
-          >
-            To keep connected with us please sign in with your personal info
-          </Text>
-
-          <View
-            style={{
-              marginTop: MARGIN.large,
-              marginHorizontal: MARGIN.small,
-              display: "flex",
-              flexDirection: "column",
-              gap: SPACING.medium,
-              backgroundColor: "transparent",
-            }}
-          >
-            <TextInput
-              autoCapitalize="none"
-              placeholder="Email Address"
-              value={emailAddress}
-              onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-              style={{
-                marginTop: MARGIN.small,
-
-                paddingVertical: PADDING.medium,
-                fontSize: FONT_SIZE.large,
-                paddingHorizontal: PADDING.medium,
-                borderRadius: BORDER_RADIUS.small,
-              }}
-              className="bg-black/10"
-            />
-            <TextInput
-              placeholder="Password"
-              value={password}
-              onChangeText={(password) => setPassword(password)}
-              secureTextEntry
-              style={{
-                marginTop: MARGIN.small,
-                paddingVertical: PADDING.medium,
-                fontSize: FONT_SIZE.large,
-                paddingHorizontal: PADDING.medium,
-                borderRadius: BORDER_RADIUS.small,
-              }}
-              className="bg-black/10"
-            />
-
-            <View
-              style={{
-                marginTop: MARGIN.small,
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-end",
-                backgroundColor: "transparent",
-              }}
-            >
-              <Text style={{ color: COLORS.primary }}>Forgot Password</Text>
-            </View>
-
-            <TouchableOpacity
+            <Text
               style={{
                 marginTop: MARGIN.large,
-                backgroundColor: COLORS.secondary,
-                paddingVertical: PADDING.medium,
-                paddingHorizontal: PADDING.large,
-                borderRadius: BORDER_RADIUS.small,
+                fontSize: FONT_SIZE.heading * 1.5,
+                padding: PADDING.large,
+                fontWeight: "bold",
+                color: COLORS.white,
               }}
-              activeOpacity={0.6}
-              onPress={onSignInPress}
             >
-              {isLoadingEmail ? (
-                <ActivityIndicator size="small" color={COLORS.black} />
-              ) : (
-                <Text
-                  style={{
-                    color: "#fff",
-                    fontSize: FONT_SIZE.large,
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                  Sign In
-                </Text>
-              )}
-            </TouchableOpacity>
-          </View>
+              <Text style={{ color: COLORS.primary }}>Umoja</Text>Tickets
+            </Text>
 
-          <View
-            style={{
-              backgroundColor: "transparent",
-              display: "flex",
-              flex: 1,
-              justifyContent: "flex-end",
-              padding: PADDING.small,
-              marginTop: MARGIN.small,
-            }}
-          >
+            {/* Sign in form */}
             <View
               style={{
-                position: "relative",
-                marginBottom: MARGIN.large,
+                marginTop: MARGIN.large,
+                padding: PADDING.large,
+                borderWidth: 1,
+                backgroundColor: COLORS.lightBlue,
+                borderTopEndRadius: BORDER_RADIUS.large * 2,
+                borderTopStartRadius: BORDER_RADIUS.large * 2,
+                flex: 1,
               }}
             >
-              <View style={{ height: 1, backgroundColor: "#000" }} />
               <Text
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2"
                 style={{
-                  backgroundColor: COLORS.lightBlue,
+                  fontSize: FONT_SIZE.large * 1.5,
+                  fontWeight: "bold",
                   color: COLORS.black,
                 }}
               >
-                OR CONTINUE WITH
+                Sign In
               </Text>
-            </View>
-
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: SPACING.medium,
-                backgroundColor: 'transparent",',
-                marginBottom: MARGIN.large,
-              }}
-            >
-              <TouchableOpacity
+              <Text
                 style={{
-                  paddingVertical: PADDING.medium,
-                  paddingHorizontal: PADDING.large,
-                  borderRadius: BORDER_RADIUS.small,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderWidth: 1,
-                  borderColor: "#000",
-                  position: "relative",
+                  fontSize: FONT_SIZE.medium,
+                  marginTop: MARGIN.small,
+                  color: COLORS.black,
                 }}
-                activeOpacity={0.4}
               >
-                <AntDesign
-                  name="facebook-square"
-                  size={24}
-                  color={COLORS.black}
-                  style={{ position: "absolute", left: 20 }}
-                />
-                <Text
+                To keep connected with us please sign in with your personal info
+              </Text>
+
+              <View
+                style={{
+                  marginTop: MARGIN.large,
+                  marginHorizontal: MARGIN.small,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: SPACING.medium,
+                  backgroundColor: "transparent",
+                }}
+              >
+                <TextInput
+                  autoCapitalize="none"
+                  placeholder="Email Address"
+                  value={emailAddress}
+                  onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
                   style={{
-                    color: "#000",
+                    marginTop: MARGIN.small,
+
+                    paddingVertical: PADDING.medium,
                     fontSize: FONT_SIZE.large,
-                    fontWeight: "bold",
+                    paddingHorizontal: PADDING.medium,
+                    borderRadius: BORDER_RADIUS.small,
+                  }}
+                  className="bg-black/10"
+                />
+                <TextInput
+                  placeholder="Password"
+                  value={password}
+                  onChangeText={(password) => setPassword(password)}
+                  secureTextEntry
+                  style={{
+                    marginTop: MARGIN.small,
+                    paddingVertical: PADDING.medium,
+                    fontSize: FONT_SIZE.large,
+                    paddingHorizontal: PADDING.medium,
+                    borderRadius: BORDER_RADIUS.small,
+                  }}
+                  className="bg-black/10"
+                />
+
+                <View
+                  style={{
+                    marginTop: MARGIN.small,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "flex-end",
+                    backgroundColor: "transparent",
                   }}
                 >
-                  Sign in with Facebook
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
+                  <Text style={{ color: COLORS.primary }}>Forgot Password</Text>
+                </View>
+
+                <TouchableOpacity
+                  style={{
+                    marginTop: MARGIN.large,
+                    backgroundColor: COLORS.black,
+                    paddingVertical: PADDING.medium,
+                    paddingHorizontal: PADDING.large,
+                    borderRadius: BORDER_RADIUS.small,
+                  }}
+                  activeOpacity={0.6}
+                  onPress={onSignInPress}
+                >
+                  {isLoadingEmail ? (
+                    <ActivityIndicator size={25} color={COLORS.white} />
+                  ) : (
+                    <Text
+                      style={{
+                        color: "#fff",
+                        fontSize: FONT_SIZE.large,
+                        fontWeight: "bold",
+                        textAlign: "center",
+                      }}
+                    >
+                      Sign In
+                    </Text>
+                  )}
+                </TouchableOpacity>
+              </View>
+
+              <View
                 style={{
-                  paddingVertical: PADDING.medium,
-                  paddingHorizontal: PADDING.large,
-                  borderRadius: BORDER_RADIUS.small,
+                  backgroundColor: "transparent",
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderWidth: 1,
-                  borderColor: "#000",
-                  position: "relative",
+                  flex: 1,
+                  justifyContent: "flex-end",
+                  padding: PADDING.small,
+                  marginTop: MARGIN.small,
                 }}
-                activeOpacity={0.4}
-                onPress={onPressOAuth}
               >
-                <AntDesign
-                  name="google"
-                  size={24}
-                  color={COLORS.black}
-                  style={{ position: "absolute", left: 20 }}
-                />
-                {isLoadingGoogle ? (
-                  <ActivityIndicator size="small" color={COLORS.black} />
-                ) : (
+                <View
+                  style={{
+                    position: "relative",
+                    marginBottom: MARGIN.large,
+                  }}
+                >
+                  <View style={{ height: 1, backgroundColor: "#000" }} />
                   <Text
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-2"
                     style={{
-                      color: "#000",
-                      fontSize: FONT_SIZE.large,
-                      fontWeight: "bold",
+                      backgroundColor: COLORS.lightBlue,
+                      color: COLORS.black,
                     }}
                   >
-                    Sign in with Google
+                    OR CONTINUE WITH
                   </Text>
-                )}
-              </TouchableOpacity>
+                </View>
+
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: SPACING.medium,
+                    backgroundColor: 'transparent",',
+                    marginBottom: MARGIN.large,
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <TouchableOpacity
+                    style={{
+                      paddingVertical: PADDING.medium,
+                      paddingHorizontal: PADDING.large,
+                      borderRadius: BORDER_RADIUS.small,
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: 10,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderWidth: 0.5,
+                      borderColor: "#000",
+                      flex: 1,
+                    }}
+                    activeOpacity={0.4}
+                  >
+                    <AntDesign
+                      name="facebook-square"
+                      size={24}
+                      color={COLORS.black}
+                    />
+                    <Text
+                      style={{
+                        color: "#000",
+                        fontSize: FONT_SIZE.large,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Facebook
+                    </Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={{
+                      paddingVertical: PADDING.medium,
+                      paddingHorizontal: PADDING.large,
+                      borderRadius: BORDER_RADIUS.small,
+                      display: "flex",
+                      flexDirection: "row",
+                      gap: 10,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderWidth: 0.5,
+                      borderColor: "#000",
+                      flex: 1,
+                    }}
+                    activeOpacity={0.4}
+                    onPress={onPressOAuth}
+                  >
+                    {isLoadingGoogle ? (
+                      <ActivityIndicator size="small" color={COLORS.black} />
+                    ) : (
+                      <>
+                        <AntDesign
+                          name="google"
+                          size={24}
+                          color={COLORS.black}
+                        />
+                        <Text
+                          style={{
+                            color: "#000",
+                            fontSize: FONT_SIZE.large,
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Google
+                        </Text>
+                      </>
+                    )}
+                  </TouchableOpacity>
+                </View>
+
+                <View>
+                  <Text style={{ textAlign: "center", fontSize: 16 }}>
+                    Don't have an account?{" "}
+                    <Text
+                      onPress={() => router.push("/(auth)/sign-up")}
+                      style={{ color: COLORS.primary, fontWeight: "bold" }}
+                    >
+                      Sign Up
+                    </Text>
+                  </Text>
+                </View>
+              </View>
             </View>
-          </View>
-        </View>
+          </ScrollView>
+        </KeyboardAvoidingView>
       </SafeAreaView>
 
       <StatusBar style="light" backgroundColor={COLORS.black} />

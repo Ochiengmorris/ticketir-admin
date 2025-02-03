@@ -58,7 +58,7 @@ export const LAYOUT = {
 
 // Colors
 export const COLORS = {
-  primary: "#3c8ff8", // Example primary color
+  primary: "#00c9aa", // Example primary color
   secondary: "#FF6F61", // Example secondary color
   background: "#F4F4F4", // Example background color
   white: "#FFFFFF",

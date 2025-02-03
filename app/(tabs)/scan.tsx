@@ -1,19 +1,21 @@
+import { COLORS, MARGIN } from "@/constants/sizes";
 import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Tab Scan</Text>
       <View style={styles.separator} />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: MARGIN.medium,
+    backgroundColor: COLORS.white,
   },
   title: {
     fontSize: 20,

@@ -1,3 +1,4 @@
+import { COLORS } from "@/constants/sizes";
 import { AntDesign } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React from "react";
@@ -91,11 +92,11 @@ export default TabBar;
 const styles = StyleSheet.create({
   tabbar: {
     position: "absolute",
-    bottom: 10,
+    bottom: 13,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "white",
+    backgroundColor: COLORS.grey + "40",
     marginHorizontal: 20,
     paddingVertical: 15,
     borderRadius: 25,

@@ -20,18 +20,21 @@ export default function TabLayout() {
           name="home"
           options={{
             title: "Home",
+            headerShown: false,
           }}
         />
         <Tabs.Screen
           name="scan"
           options={{
             title: "Scan",
+            headerShown: false,
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: "Profile",
+            headerShown: false,
           }}
         />
       </Tabs>

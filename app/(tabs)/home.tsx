@@ -1,14 +1,13 @@
-import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet, Text, View } from "react-native";
+import { useUser } from "@clerk/clerk-expo";
+import { StyleSheet, Text, View } from "react-native";
 
-export default function ModalScreen() {
+export default function HomeScreen() {
+  const { user } = useUser();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Modal</Text>
+      <Text style={styles.title}>Home</Text>
+      {user && <Text>Welcome, {user.emailAddresses[0].emailAddress}</Text>}
       <View style={styles.separator} />
-
-      {/* Use a light status bar on iOS to account for the black space above the modal */}
-      <StatusBar style={Platform.OS === "ios" ? "light" : "auto"} />
     </View>
   );
 }

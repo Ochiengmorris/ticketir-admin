@@ -59,7 +59,7 @@ const SignUpScreen = () => {
     try {
       const { createdSessionId, signUp, signIn, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("/(tabs)/two", {
+          redirectUrl: Linking.createURL("/(tabs)/home", {
             scheme: "com.johnte.ticketradmin",
           }),
         });
@@ -98,7 +98,7 @@ const SignUpScreen = () => {
       // Set the session as active and redirect user
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
-        router.replace("/(tabs)/two");
+        router.replace("/(tabs)/home");
       } else {
         const newError = JSON.parse(JSON.stringify(signUpAttempt, null, 2));
         Alert.alert("Error", newError.errors[0].message || "An error occurred");

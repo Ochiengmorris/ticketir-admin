@@ -17,7 +17,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)",
+  initialRouteName: "/(auth)/sign-in",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -44,16 +44,22 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
-}
-
-function RootLayoutNav() {
   return (
     <ClerkAuthProvider>
       <ConvexClientProvider>
         <SyncUserWithConvex />
-        <Stack screenOptions={{ headerShown: false }} />
+        <RootLayoutNav />
       </ConvexClientProvider>
     </ClerkAuthProvider>
+  );
+}
+
+function RootLayoutNav() {
+  return (
+    <Stack>
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+    </Stack>
   );
 }

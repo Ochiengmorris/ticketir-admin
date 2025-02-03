@@ -29,7 +29,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export const useWarmUpBrowser = () => {
   React.useEffect(() => {
     // Warm up the android browser to improve UX
-    // https://docs.expo.dev/guides/authentication/#improving-user-experience
+
     void WebBrowser.warmUpAsync();
     return () => {
       void WebBrowser.coolDownAsync();
@@ -58,7 +58,7 @@ const SignIn = () => {
     try {
       const { createdSessionId, signUp, signIn, setActive } =
         await startOAuthFlow({
-          redirectUrl: Linking.createURL("/(tabs)/two", {
+          redirectUrl: Linking.createURL("/(tabs)/home", {
             scheme: "com.johnte.ticketradmin",
           }),
         });
@@ -98,7 +98,7 @@ const SignIn = () => {
       // and redirect the user
       if (signInAttempt.status === "complete") {
         await setActive({ session: signInAttempt.createdSessionId });
-        router.replace("/(tabs)/two");
+        router.replace("/(tabs)/home");
       } else {
         // If the status isn't complete, check why. User might need to
         // complete further steps.
@@ -304,7 +304,7 @@ const SignIn = () => {
                       justifyContent: "center",
                       alignItems: "center",
                       borderWidth: 0.5,
-                      borderColor: "#000",
+                      borderColor: "#ccc",
                       flex: 1,
                     }}
                     activeOpacity={0.4}
@@ -335,7 +335,7 @@ const SignIn = () => {
                       justifyContent: "center",
                       alignItems: "center",
                       borderWidth: 0.5,
-                      borderColor: "#000",
+                      borderColor: "#ccc",
                       flex: 1,
                     }}
                     activeOpacity={0.4}

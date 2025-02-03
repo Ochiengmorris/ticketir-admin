@@ -1,14 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
-
-export default function TabTwoScreen() {
+const Profile = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+      <Text style={styles.title}>Profile</Text>
       <View style={styles.separator} />
     </View>
   );
-}
-
+};
+export default Profile;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

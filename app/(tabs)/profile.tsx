@@ -302,11 +302,14 @@ const Profile = () => {
                 }}
               >
                 {isLoading ? (
-                  <ActivityIndicator
-                    color={COLORS.black}
-                    size={24}
-                    style={{ marginHorizontal: "auto" }}
-                  />
+                  <View style={{ width: "100%", alignItems: "center" }}>
+                    <ActivityIndicator
+                      color={COLORS.black}
+                      size={24}
+                      style={{ marginHorizontal: "auto" }}
+                      className="text-center"
+                    />
+                  </View>
                 ) : (
                   <>
                     <View

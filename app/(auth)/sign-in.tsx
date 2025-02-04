@@ -56,13 +56,14 @@ const SignIn = () => {
     if (!isLoaded) return;
     setIsLoadingGoogle(true);
     try {
-      const { createdSessionId, signUp, signIn, setActive } =
-        await startOAuthFlow({
-          redirectUrl: Linking.createURL("/(tabs)/home", {
-            scheme: "com.johnte.ticketradmin",
-          }),
-        });
+      const OAuthResult = await startOAuthFlow({
+        redirectUrl: Linking.createURL("/(tabs)/home", {
+          scheme: "com.johnte.ticketradmin",
+        }),
+      });
+      console.log(OAuthResult);
 
+      const { createdSessionId, setActive } = OAuthResult;
       // If sign in was successful, set the active session
       if (createdSessionId) {
         setActive!({ session: createdSessionId });

@@ -42,6 +42,7 @@ const RenderEVent = ({ event }: { event: EventData }) => {
             backgroundColor: COLORS.grey + "60",
             padding: MARGIN.small,
             borderRadius: MARGIN.small,
+            alignItems: "center",
           }}
         >
           <Ionicons name="calendar" size={18} color={COLORS.primary} />

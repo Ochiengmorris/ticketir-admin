@@ -72,7 +72,8 @@ const Profile = () => {
         >
           <Image
             source={{
-              uri: "https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D",
+              // uri: "https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D",
+              uri: user?.imageUrl ?? "",
             }}
             style={{ width: 80, height: 80, borderRadius: 75 }}
           />
@@ -345,7 +346,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: MARGIN.medium,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.lightBlue,
   },
   title: {
     fontSize: 20,

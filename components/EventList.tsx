@@ -67,12 +67,12 @@ const EventList = () => {
             <MaterialIcons
               name="event-busy"
               size={44}
-              color={COLORS.white + "90"}
+              color={COLORS.black + "90"}
             />
             <Text
               style={{
                 marginTop: MARGIN.small,
-                color: COLORS.white + "90",
+                color: COLORS.black + "90",
                 fontWeight: "bold",
                 fontSize: 18,
               }}

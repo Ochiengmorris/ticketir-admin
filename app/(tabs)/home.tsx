@@ -33,7 +33,8 @@ export default function HomeScreen() {
         >
           <Image
             source={{
-              uri: "https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D",
+              // uri: "https://images.unsplash.com/photo-1595152452543-e5fc28ebc2b8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVuJTIwcG9ydHJhaXR8ZW58MHx8MHx8fDA%3D",
+              uri: user?.imageUrl ?? "",
             }}
             style={{ width: 70, height: 70, borderRadius: 15 }}
           />
@@ -80,7 +81,7 @@ export default function HomeScreen() {
         style={{
           marginTop: MARGIN.medium * 2,
           flex: 1,
-          backgroundColor: COLORS.lightBlue + "60",
+          backgroundColor: COLORS.lightBlue + "",
           borderTopEndRadius: 25,
           borderTopStartRadius: 25,
         }}
@@ -98,7 +99,7 @@ export default function HomeScreen() {
         >
           <Text
             style={{
-              color: COLORS.white,
+              color: COLORS.black,
               fontSize: 24,
               fontWeight: "bold",
             }}

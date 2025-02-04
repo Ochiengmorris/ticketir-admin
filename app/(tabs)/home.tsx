@@ -14,7 +14,7 @@ export default function HomeScreen() {
 
       <View
         style={{
-          backgroundColor: COLORS.black + "10",
+          // backgroundColor: COLORS.black + "1,
           paddingVertical: MARGIN.medium,
           paddingHorizontal: MARGIN.medium,
           borderTopLeftRadius: 15,
@@ -40,7 +40,7 @@ export default function HomeScreen() {
           <View style={{}}>
             <Text
               style={{
-                color: COLORS.black,
+                color: COLORS.grey,
                 fontSize: 16,
                 fontWeight: "400",
               }}
@@ -49,10 +49,11 @@ export default function HomeScreen() {
             </Text>
             <Text
               style={{
-                color: COLORS.black,
+                color: COLORS.primary,
                 fontSize: 26,
                 fontWeight: "bold",
               }}
+              className="capitalize"
             >
               {user?.username ?? user?.firstName ?? ""}
             </Text>
@@ -75,7 +76,15 @@ export default function HomeScreen() {
       </View>
 
       {/* Main Content */}
-      <View style={{ marginTop: MARGIN.medium * 2, flex: 1 }}>
+      <View
+        style={{
+          marginTop: MARGIN.medium * 2,
+          flex: 1,
+          backgroundColor: COLORS.grey + "95",
+          borderTopEndRadius: 25,
+          borderTopStartRadius: 25,
+        }}
+      >
         {/* section title */}
         <View
           style={{
@@ -84,11 +93,12 @@ export default function HomeScreen() {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
+            marginTop: MARGIN.large,
           }}
         >
           <Text
             style={{
-              color: COLORS.black,
+              color: COLORS.white,
               fontSize: 24,
               fontWeight: "bold",
             }}
@@ -131,6 +141,6 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.white,
+    backgroundColor: COLORS.black,
   },
 });

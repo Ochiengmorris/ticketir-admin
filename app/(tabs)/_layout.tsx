@@ -38,7 +38,7 @@ export default function TabLayout() {
           }}
         />
       </Tabs>
-      <StatusBar style="dark" backgroundColor={COLORS.white} />
+      <StatusBar style="light" backgroundColor={COLORS.black} />
     </>
   );
 }

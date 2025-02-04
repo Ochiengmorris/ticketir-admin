@@ -85,7 +85,7 @@ const Profile = () => {
           >
             <Text
               style={{ fontWeight: "bold", fontSize: 20, textAlign: "center" }}
-              className="uppercase"
+              className="capitalize"
             >
               {user?.username ?? user?.firstName ?? ""}
             </Text>

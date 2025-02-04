@@ -22,8 +22,8 @@ const RenderEVent = ({ event }: { event: EventData }) => {
       key={event._id}
       style={{
         padding: MARGIN.large,
-        backgroundColor: COLORS.grey + "30",
-        borderRadius: MARGIN.medium,
+        backgroundColor: COLORS.white,
+        borderRadius: MARGIN.medium * 1.1,
         marginBottom: MARGIN.medium,
       }}
     >

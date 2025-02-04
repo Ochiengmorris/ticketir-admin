@@ -1,11 +1,11 @@
 import { sampleEvents } from "@/constants/data";
-import { MARGIN } from "@/constants/sizes";
+import { COLORS, MARGIN } from "@/constants/sizes";
 import { api } from "@/convex/_generated/api";
 import { useUser } from "@clerk/clerk-expo";
-import { EvilIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useQuery } from "convex/react";
 import { useEffect, useState } from "react";
-import { FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import RenderEVent, { EventData } from "./RenderEvent";
 
 const EventList = () => {
@@ -37,12 +37,7 @@ const EventList = () => {
           alignItems: "center",
         }}
       >
-        <EvilIcons
-          name="spinner"
-          size={34}
-          color="black"
-          className="animate-spin"
-        />
+        <ActivityIndicator color={COLORS.primary} size={34} />
       </View>
     );
   }
@@ -56,7 +51,7 @@ const EventList = () => {
       }}
     >
       <FlatList
-        data={events}
+        data={data}
         keyExtractor={(event) => event._id}
         renderItem={({ item }) => <RenderEVent event={item} />}
         contentContainerStyle={{ paddingBottom: 100 }}
@@ -69,7 +64,7 @@ const EventList = () => {
               alignItems: "center",
             }}
           >
-            <MaterialIcons name="event-busy" size={34} color="black" />
+            <MaterialIcons name="event-busy" size={44} color="black" />
             <Text style={{ marginTop: MARGIN.small }}>No events found.</Text>
           </View>
         )}

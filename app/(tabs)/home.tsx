@@ -80,7 +80,7 @@ export default function HomeScreen() {
         style={{
           marginTop: MARGIN.medium * 2,
           flex: 1,
-          backgroundColor: COLORS.grey + "95",
+          backgroundColor: COLORS.lightBlue + "60",
           borderTopEndRadius: 25,
           borderTopStartRadius: 25,
         }}

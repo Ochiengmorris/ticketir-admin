@@ -26,7 +26,8 @@ const TabBar: React.FC<BottomTabBarProps> = ({
   };
 
   const primaryColor = "#0891b2";
-  const greyColor = "#737373";
+  // const greyColor = "#737373";
+  const greyColor = COLORS.background;
 
   return (
     <View style={styles.tabbar}>
@@ -96,12 +97,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#f7f7f7",
+    backgroundColor: COLORS.black,
     marginHorizontal: 20,
     paddingVertical: 15,
-    borderRadius: 25,
-    borderWidth: 1,
-    borderColor: COLORS.grey + "70",
+    borderRadius: 35,
+    // borderWidth: 1,
+    // borderColor: COLORS.grey + "70",
     borderCurve: "continuous",
     shadowColor: "black",
     shadowOffset: { width: 0, height: 10 },

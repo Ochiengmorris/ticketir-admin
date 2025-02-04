@@ -64,8 +64,21 @@ const EventList = () => {
               alignItems: "center",
             }}
           >
-            <MaterialIcons name="event-busy" size={44} color="black" />
-            <Text style={{ marginTop: MARGIN.small }}>No events found.</Text>
+            <MaterialIcons
+              name="event-busy"
+              size={44}
+              color={COLORS.white + "90"}
+            />
+            <Text
+              style={{
+                marginTop: MARGIN.small,
+                color: COLORS.white + "90",
+                fontWeight: "bold",
+                fontSize: 18,
+              }}
+            >
+              No events found.
+            </Text>
           </View>
         )}
       />

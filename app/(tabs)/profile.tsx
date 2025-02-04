@@ -162,9 +162,9 @@ const Profile = () => {
                   My Events
                 </Text>
               </View>
-              <AntDesign
-                name="arrowright"
-                size={20}
+              <FontAwesome
+                name="chevron-right"
+                size={14}
                 color={COLORS.black + "90"}
               />
             </TouchableOpacity>
@@ -206,9 +206,9 @@ const Profile = () => {
                 </View>
                 <Text style={{ fontSize: 15, fontWeight: "500" }}>Support</Text>
               </View>
-              <AntDesign
-                name="arrowright"
-                size={22}
+              <FontAwesome
+                name="chevron-right"
+                size={14}
                 color={COLORS.black + "90"}
               />
             </TouchableOpacity>

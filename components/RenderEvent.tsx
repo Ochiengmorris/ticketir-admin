@@ -1,10 +1,14 @@
 import { COLORS, MARGIN, PADDING } from "@/constants/sizes";
+import { api } from "@/convex/_generated/api";
+import { Id } from "@/convex/_generated/dataModel";
 import { DateFormatter } from "@/utils/utils";
 import { Ionicons } from "@expo/vector-icons";
+import { useQuery } from "convex/react";
+import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 
 export type EventData = {
-  _id: string; // Unique event ID
+  _id: Id<"events">; // Unique event ID
   _creationTime: number; // Timestamp of event creation
   imageStorageId?: string; // Optional image storage ID
   is_cancelled?: boolean; // Optional flag for cancellation status
@@ -17,6 +21,12 @@ export type EventData = {
   userId: string; // ID of the user who created the event
 };
 const RenderEVent = ({ event }: { event: EventData }) => {
+  const availability = useQuery(api.events.getEventAvailability, {
+    eventId: event._id,
+  });
+
+  if (!availability) return null;
+
   return (
     <View
       key={event._id}
@@ -81,7 +91,9 @@ const RenderEVent = ({ event }: { event: EventData }) => {
             marginVertical: MARGIN.small,
           }}
         >
-          <Text style={{ fontWeight: "700", fontSize: 21 }}>512</Text>
+          <Text style={{ fontWeight: "700", fontSize: 21 }}>
+            {availability.purchasedCount}
+          </Text>
           <Text
             style={{
               fontWeight: "700",
@@ -115,7 +127,7 @@ const RenderEVent = ({ event }: { event: EventData }) => {
             >
               Ksh
             </Text>{" "}
-            2,142
+            {event.price * availability.purchasedCount}
           </Text>
           <Text
             style={{
@@ -139,6 +151,7 @@ const RenderEVent = ({ event }: { event: EventData }) => {
           borderRadius: MARGIN.small,
         }}
         activeOpacity={0.5}
+        onPress={() => router.push(`/(event)/view-event/${event._id}`)}
       >
         <Text
           style={{ fontWeight: "700", fontSize: 16, color: COLORS.primary }}

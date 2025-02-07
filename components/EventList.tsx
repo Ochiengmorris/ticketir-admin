@@ -51,7 +51,7 @@ const EventList = () => {
       }}
     >
       <FlatList
-        data={data}
+        data={events}
         keyExtractor={(event) => event._id}
         renderItem={({ item }) => <RenderEVent event={item} />}
         contentContainerStyle={{ paddingBottom: 100 }}

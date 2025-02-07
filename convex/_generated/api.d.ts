@@ -8,18 +8,21 @@
  * @module
  */
 
+import type * as constants from "../constants.js";
+import type * as crons from "../crons.js";
+import type * as events from "../events.js";
+import type * as mpesaTransactions from "../mpesaTransactions.js";
+import type * as storage from "../storage.js";
+import type * as tickets from "../tickets.js";
+import type * as users from "../users.js";
+import type * as waitingList from "../waitingList.js";
+import type * as withdrawals from "../withdrawals.js";
+
 import type {
   ApiFromModules,
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as constants from "../constants.js";
-import type * as events from "../events.js";
-import type * as storage from "../storage.js";
-import type * as ticket from "../ticket.js";
-import type * as users from "../users.js";
-import type * as withdrawals from "../withdrawals.js";
-
 /**
  * A utility for referencing Convex functions in your app's API.
  *
@@ -30,17 +33,101 @@ import type * as withdrawals from "../withdrawals.js";
  */
 declare const fullApi: ApiFromModules<{
   constants: typeof constants;
+  crons: typeof crons;
   events: typeof events;
+  mpesaTransactions: typeof mpesaTransactions;
   storage: typeof storage;
-  ticket: typeof ticket;
+  tickets: typeof tickets;
   users: typeof users;
+  waitingList: typeof waitingList;
   withdrawals: typeof withdrawals;
 }>;
+declare const fullApiWithMounts: typeof fullApi;
+
 export declare const api: FilterApi<
-  typeof fullApi,
+  typeof fullApiWithMounts,
   FunctionReference<any, "public">
 >;
 export declare const internal: FilterApi<
-  typeof fullApi,
+  typeof fullApiWithMounts,
   FunctionReference<any, "internal">
 >;
+
+export declare const components: {
+  rateLimiter: {
+    lib: {
+      checkRateLimit: FunctionReference<
+        "query",
+        "internal",
+        {
+          config:
+            | {
+                capacity?: number;
+                kind: "token bucket";
+                maxReserved?: number;
+                period: number;
+                rate: number;
+                shards?: number;
+              }
+            | {
+                capacity?: number;
+                kind: "fixed window";
+                maxReserved?: number;
+                period: number;
+                rate: number;
+                shards?: number;
+                start?: number;
+              };
+          count?: number;
+          key?: string;
+          name: string;
+          reserve?: boolean;
+          throws?: boolean;
+        },
+        { ok: true; retryAfter?: number } | { ok: false; retryAfter: number }
+      >;
+      clearAll: FunctionReference<
+        "mutation",
+        "internal",
+        { before?: number },
+        null
+      >;
+      rateLimit: FunctionReference<
+        "mutation",
+        "internal",
+        {
+          config:
+            | {
+                capacity?: number;
+                kind: "token bucket";
+                maxReserved?: number;
+                period: number;
+                rate: number;
+                shards?: number;
+              }
+            | {
+                capacity?: number;
+                kind: "fixed window";
+                maxReserved?: number;
+                period: number;
+                rate: number;
+                shards?: number;
+                start?: number;
+              };
+          count?: number;
+          key?: string;
+          name: string;
+          reserve?: boolean;
+          throws?: boolean;
+        },
+        { ok: true; retryAfter?: number } | { ok: false; retryAfter: number }
+      >;
+      resetRateLimit: FunctionReference<
+        "mutation",
+        "internal",
+        { key?: string; name: string },
+        null
+      >;
+    };
+  };
+};

@@ -61,15 +61,18 @@ const SignIn = () => {
           scheme: "com.johnte.ticketradmin",
         }),
       });
-      console.log(OAuthResult);
+      // const readable = JSON.parse(JSON.stringify(OAuthResult, null, 2));
+      // console.log(readable);
 
-      const { createdSessionId, setActive } = OAuthResult;
+      const { createdSessionId, setActive, authSessionResult } = OAuthResult;
       // If sign in was successful, set the active session
       if (createdSessionId) {
         setActive!({ session: createdSessionId });
-      } else {
-        // Use signIn or signUp returned from startOAuthFlow
-        // for next steps, such as MFA
+      } else if (!createdSessionId && authSessionResult?.type === "success") {
+        Alert.alert(
+          "Authentication error",
+          "Only one account can be signed in on a device at a time."
+        );
       }
     } catch (err) {
       const newError = JSON.parse(JSON.stringify(err, null, 2));

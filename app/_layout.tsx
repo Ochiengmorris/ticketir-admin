@@ -1,13 +1,16 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "react-native-reanimated";
 
 import SyncUserWithConvex from "@/components/SyncUserWithConvex";
 import ClerkAuthProvider from "@/utils/ClerkProvider";
 import ConvexClientProvider from "@/utils/ConvexProvider";
 import { Stack } from "expo-router";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import Toast from "react-native-toast-message";
+import { Toaster } from "sonner-native";
 import "../global.css";
 
 export {
@@ -45,21 +48,25 @@ export default function RootLayout() {
   }
 
   return (
-    <ClerkAuthProvider>
-      <ConvexClientProvider>
-        <SyncUserWithConvex />
-        <RootLayoutNav />
-      </ConvexClientProvider>
-    </ClerkAuthProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ClerkAuthProvider>
+        <ConvexClientProvider>
+          {/* Ensure that the user is synced with Convex before showing the app. */}
+
+          <SyncUserWithConvex />
+          <RootLayoutNav />
+          <Toaster />
+        </ConvexClientProvider>
+      </ClerkAuthProvider>
+    </GestureHandlerRootView>
   );
 }
 
 function RootLayoutNav() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-    </Stack>
+    <>
+      <Stack screenOptions={{ headerShown: false }} />
+      <Toast />
+    </>
   );
 }

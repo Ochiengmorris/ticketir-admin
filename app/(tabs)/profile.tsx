@@ -306,7 +306,7 @@ const Profile = () => {
                   <View style={{ width: "100%", alignItems: "center" }}>
                     <ActivityIndicator
                       color={COLORS.black}
-                      size={24}
+                      size={34}
                       style={{ marginHorizontal: "auto" }}
                       className="text-center"
                     />
@@ -329,7 +329,7 @@ const Profile = () => {
                         color: "#ff0059",
                       }}
                     >
-                      Support
+                      Sign Out
                     </Text>
                   </>
                 )}

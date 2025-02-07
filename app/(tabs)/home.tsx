@@ -2,6 +2,7 @@ import EventList from "@/components/EventList";
 import { COLORS, MARGIN } from "@/constants/sizes";
 import { useUser } from "@clerk/clerk-expo";
 import { FontAwesome } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -119,6 +120,7 @@ export default function HomeScreen() {
               paddingHorizontal: 15,
               paddingVertical: 13,
             }}
+            onPress={() => router.push("/(event)/create-event")}
           >
             <FontAwesome name="plus" size={14} color="#fff" />
             <Text

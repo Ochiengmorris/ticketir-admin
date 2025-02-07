@@ -6,7 +6,7 @@ export const DURATIONS = {
 } as const;
 
 // Status types for better type safety
-export const WAITING_LIST_STATUS: Record<string, Doc["waitingList"]["status"]> =
+export const WAITING_LIST_STATUS: Record<string, Doc<"waitingList">["status"]> =
   {
     WAITING: "waiting",
     OFFERED: "offered",
@@ -14,7 +14,7 @@ export const WAITING_LIST_STATUS: Record<string, Doc["waitingList"]["status"]> =
     EXPIRED: "expired",
   } as const;
 
-export const TICKET_STATUS: Record<string, Doc["tickets"]["status"]> = {
+export const TICKET_STATUS: Record<string, Doc<"tickets">["status"]> = {
   VALID: "valid",
   USED: "used",
   REFUNDED: "refunded",

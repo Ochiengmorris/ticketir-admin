@@ -1,0 +1,29 @@
+{
+  "cli": {
+    "version": ">= 14.4.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "env": {
+        "NPM_CONFIG_LEGACY_PEER_DEPS": "true"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_CONVEX_URL": "https://oceanic-eagle-897.convex.cloud",
+        "EXPO_PUBLIC_CLERK_SECRET_KEY": "sk_test_5cMFgtTnVK9CeCGiS2MI8oCsEhp2Mg7oQELPRzYKWA",
+        "EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY": "pk_test_aW1tb3J0YWwtZ3JhY2tsZS02NS5jbGVyay5hY2NvdW50cy5kZXYk"
+      }
+    },
+    "production": {
+      "autoIncrement": true
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

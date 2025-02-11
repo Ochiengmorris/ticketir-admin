@@ -94,3 +94,30 @@ export const updateTicketStatus = mutation({
     await ctx.db.patch(ticketId, { status });
   },
 });
+
+export const validateTicket = mutation({
+  args: {
+    ticketId: v.id("tickets"),
+  },
+  handler: async (ctx, { ticketId }) => {
+    const ticket = await ctx.db.get(ticketId);
+    if (!ticket) {
+      throw new Error("Ticket not found");
+    }
+
+    if (ticket.status === "used") {
+      return { success: false, message: "Ticket already validated" };
+    }
+
+    if (ticket.status === "refunded") {
+      return { success: false, message: "Ticket has been refunded" };
+    }
+
+    if (ticket.status === "cancelled") {
+      return { success: false, message: "Ticket has been cancelled" };
+    }
+
+    await ctx.db.patch(ticketId, { status: "used" });
+    return { success: true, message: "Ticket validated successfully" };
+  },
+});

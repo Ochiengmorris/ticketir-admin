@@ -306,7 +306,7 @@ const Profile = () => {
                   <View style={{ width: "100%", alignItems: "center" }}>
                     <ActivityIndicator
                       color={COLORS.black}
-                      size={34}
+                      size={36}
                       style={{ marginHorizontal: "auto" }}
                       className="text-center"
                     />

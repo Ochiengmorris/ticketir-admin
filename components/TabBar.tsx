@@ -1,5 +1,5 @@
 import { COLORS } from "@/constants/sizes";
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
@@ -19,7 +19,10 @@ const TabBar: React.FC<BottomTabBarProps> = ({
 
   const icons: Icons = {
     home: (props: IconProps) => <AntDesign name="home" size={24} {...props} />,
-    scan: (props: IconProps) => <AntDesign name="scan1" size={24} {...props} />,
+    // scan: (props: IconProps) => <AntDesign name="scan1" size={24} {...props} />,
+    scan: (props: IconProps) => (
+      <MaterialIcons name="qr-code-scanner" size={24} {...props} />
+    ),
     profile: (props: IconProps) => (
       <AntDesign name="user" size={24} {...props} />
     ),

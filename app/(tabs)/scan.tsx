@@ -59,7 +59,7 @@ const RenderEvents = ({ event }: { event: EventData }) => {
       {/* Event Name */}
       <Text
         style={{
-          fontWeight: "700",
+          fontFamily: "PoppinsSemiBold",
           fontSize: 18,
           marginVertical: MARGIN.small,
         }}
@@ -80,7 +80,11 @@ const RenderEvents = ({ event }: { event: EventData }) => {
         onPress={() => router.push(`/(event)/scan/${event._id}`)}
       >
         <Text
-          style={{ fontWeight: "700", fontSize: 16, color: COLORS.primary }}
+          style={{
+            fontFamily: "PoppinsMedium",
+            fontSize: 16,
+            color: COLORS.primary,
+          }}
         >
           Scan Tickets
         </Text>

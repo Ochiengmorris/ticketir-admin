@@ -48,7 +48,7 @@ const EventCreate = () => {
           style={{
             color: COLORS.lightBlue,
             fontSize: 22,
-            fontWeight: "bold",
+            fontFamily: "PoppinsSemiBold",
           }}
         >
           <Text style={{ color: COLORS.primary }}>Create</Text> Event

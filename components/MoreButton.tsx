@@ -25,6 +25,7 @@ const MoreButton = ({ Id }: { Id: string }) => {
         <DropdownMenu.Item
           key="edit"
           onSelect={() => router.push(`/(event)/event/${Id}/edit`)}
+          style={{ fontFamily: "PoppinsBold" }}
           textValue="Edit Event"
         >
           <DropdownMenu.ItemTitle>Edit Event</DropdownMenu.ItemTitle>

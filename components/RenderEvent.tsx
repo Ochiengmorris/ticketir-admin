@@ -56,7 +56,13 @@ const RenderEVent = ({ event }: { event: EventData }) => {
           }}
         >
           <Ionicons name="calendar" size={18} color={COLORS.primary} />
-          <Text style={{ fontWeight: "800", fontSize: 14 }}>
+          <Text
+            style={{
+              fontWeight: "800",
+              fontFamily: "PoppinsRegular",
+              fontSize: 14,
+            }}
+          >
             {DateFormatter({ date: event.eventDate })}
           </Text>
         </View>
@@ -67,8 +73,9 @@ const RenderEVent = ({ event }: { event: EventData }) => {
       {/* Event Name */}
       <Text
         style={{
-          fontWeight: "700",
-          fontSize: 18,
+          // fontWeight: "700",
+          fontFamily: "PoppinsMedium",
+          fontSize: 24,
           marginVertical: MARGIN.small,
         }}
       >
@@ -96,8 +103,9 @@ const RenderEVent = ({ event }: { event: EventData }) => {
           </Text>
           <Text
             style={{
-              fontWeight: "700",
-              fontSize: 13,
+              // fontWeight: "700",
+              fontFamily: "PoppinsRegular",
+              fontSize: 16,
               color: COLORS.black + "60",
             }}
           >
@@ -131,8 +139,8 @@ const RenderEVent = ({ event }: { event: EventData }) => {
           </Text>
           <Text
             style={{
-              fontWeight: "700",
-              fontSize: 13,
+              fontFamily: "PoppinsRegular",
+              fontSize: 16,
               color: COLORS.black + "60",
             }}
           >
@@ -154,7 +162,11 @@ const RenderEVent = ({ event }: { event: EventData }) => {
         onPress={() => router.push(`/(event)/view-event/${event._id}`)}
       >
         <Text
-          style={{ fontWeight: "700", fontSize: 16, color: COLORS.primary }}
+          style={{
+            fontFamily: "PoppinsMedium",
+            fontSize: 16,
+            color: COLORS.primary,
+          }}
         >
           Manage Event
         </Text>

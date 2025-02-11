@@ -138,7 +138,11 @@ const EventDetails = () => {
           }}
         >
           <Text
-            style={{ fontSize: 30, fontWeight: "bold", color: COLORS.black }}
+            style={{
+              fontSize: 30,
+              fontFamily: "PoppinsBold",
+              color: COLORS.black,
+            }}
             numberOfLines={1}
           >
             {event.name}
@@ -150,6 +154,7 @@ const EventDetails = () => {
               color: COLORS.black,
               fontSize: 30,
               fontWeight: "bold",
+              flexShrink: 0,
             }}
           >
             <Text style={{ fontSize: 12, color: COLORS.primary }}>Ksh</Text>
@@ -167,7 +172,13 @@ const EventDetails = () => {
         >
           <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
             <Entypo name="location" size={16} color="black" />
-            <Text style={{ color: COLORS.black, fontSize: 16 }}>
+            <Text
+              style={{
+                color: COLORS.black,
+                fontSize: 16,
+                fontFamily: "PoppinsSemiBold",
+              }}
+            >
               {event.location}
             </Text>
           </View>
@@ -176,7 +187,7 @@ const EventDetails = () => {
             <Text
               style={{
                 color: COLORS.black,
-                fontWeight: "bold",
+                fontFamily: "PoppinsSemiBold",
                 fontSize: 16,
               }}
             >
@@ -188,11 +199,21 @@ const EventDetails = () => {
         {/* description */}
         <View style={{ marginTop: MARGIN.small * 3 }}>
           <Text
-            style={{ color: COLORS.black, fontSize: 20, fontWeight: "bold" }}
+            style={{
+              color: COLORS.black,
+              fontSize: 20,
+              fontFamily: "PoppinsSemiBold",
+            }}
           >
             Description
           </Text>
-          <Text style={{ color: COLORS.black, fontSize: 16 }}>
+          <Text
+            style={{
+              color: COLORS.black,
+              fontSize: 16,
+              fontFamily: "PoppinsRegular",
+            }}
+          >
             {event.description}
           </Text>
         </View>
@@ -208,19 +229,41 @@ const EventDetails = () => {
           }}
         >
           <Text
-            style={{ color: COLORS.black, fontSize: 20, fontWeight: "bold" }}
+            style={{
+              color: COLORS.black,
+              fontSize: 20,
+              fontFamily: "PoppinsBold",
+            }}
           >
             Event Information
           </Text>
 
           <View style={{ marginTop: MARGIN.small, gap: 5 }}>
-            <Text style={{ color: COLORS.black, fontSize: 16 }}>
+            <Text
+              style={{
+                color: COLORS.black,
+                fontSize: 16,
+                fontFamily: "PoppinsRegular",
+              }}
+            >
               _ Please arrive 30 minutes before the event starts.
             </Text>
-            <Text style={{ color: COLORS.black, fontSize: 16 }}>
+            <Text
+              style={{
+                color: COLORS.black,
+                fontSize: 16,
+                fontFamily: "PoppinsRegular",
+              }}
+            >
               _ Tickets are non-refundable.
             </Text>
-            <Text style={{ color: COLORS.black, fontSize: 16 }}>
+            <Text
+              style={{
+                color: COLORS.black,
+                fontSize: 16,
+                fontFamily: "PoppinsRegular",
+              }}
+            >
               _ Age restriction: 18+.
             </Text>
           </View>
@@ -256,8 +299,8 @@ const EventDetails = () => {
               </Text>
               <Text
                 style={{
-                  fontWeight: "700",
-                  fontSize: 13,
+                  fontFamily: "PoppinsRegular",
+                  fontSize: 16,
                   color: COLORS.black + "60",
                 }}
               >
@@ -291,8 +334,8 @@ const EventDetails = () => {
               </Text>
               <Text
                 style={{
-                  fontWeight: "700",
-                  fontSize: 13,
+                  fontFamily: "PoppinsRegular",
+                  fontSize: 16,
                   color: COLORS.black + "60",
                 }}
               >
@@ -318,7 +361,11 @@ const EventDetails = () => {
         >
           <Fontisto name="plane-ticket" size={18} color="black" />
           <Text
-            style={{ color: COLORS.black, fontSize: 16, fontWeight: "bold" }}
+            style={{
+              color: COLORS.black,
+              fontSize: 16,
+              fontFamily: "PoppinsBold",
+            }}
           >
             Remaining tickets:{" "}
             {event.totalTickets - availability.purchasedCount}{" "}

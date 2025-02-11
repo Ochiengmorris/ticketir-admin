@@ -82,6 +82,7 @@ const TabBar: React.FC<BottomTabBarProps> = ({
               style={{
                 color: isFocused ? primaryColor : greyColor,
                 fontSize: 11,
+                fontFamily: "PoppinsMedium",
               }}
             >
               {label}

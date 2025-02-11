@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "PoppinsBold",
     marginBottom: 8,
   },
   input: {
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "PoppinsRegular",
   },
   errorText: {
     color: "red",
@@ -394,7 +394,7 @@ const styles = StyleSheet.create({
   removeImageText: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "PoppinsBold",
   },
   uploadButton: {
     backgroundColor: COLORS.black,
@@ -407,7 +407,7 @@ const styles = StyleSheet.create({
   uploadButtonText: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "PoppinsSemiBold",
   },
   submitButton: {
     backgroundColor: COLORS.black,
@@ -419,6 +419,6 @@ const styles = StyleSheet.create({
   submitButtonText: {
     color: "white",
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "PoppinsBold",
   },
 });

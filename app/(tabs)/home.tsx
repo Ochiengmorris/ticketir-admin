@@ -45,6 +45,7 @@ export default function HomeScreen() {
                 color: COLORS.grey,
                 fontSize: 16,
                 fontWeight: "400",
+                fontFamily: "PoppinsRegular",
               }}
             >
               Good Morning,
@@ -52,10 +53,10 @@ export default function HomeScreen() {
             <Text
               style={{
                 color: COLORS.primary,
-                fontSize: 26,
-                fontWeight: "bold",
+                fontSize: 34,
+                fontFamily: "PoppinsBold",
+                textTransform: "capitalize",
               }}
-              className="capitalize"
             >
               {user?.username ?? user?.firstName ?? ""}
             </Text>
@@ -102,7 +103,7 @@ export default function HomeScreen() {
             style={{
               color: COLORS.black,
               fontSize: 24,
-              fontWeight: "bold",
+              fontFamily: "PoppinsMedium",
             }}
           >
             My Events
@@ -126,8 +127,8 @@ export default function HomeScreen() {
             <Text
               style={{
                 color: COLORS.white,
-                fontWeight: "600",
                 fontSize: 14,
+                fontFamily: "PoppinsMedium",
               }}
             >
               Create Event

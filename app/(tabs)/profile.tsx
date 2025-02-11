@@ -1,11 +1,6 @@
 import { COLORS, MARGIN, SPACING } from "@/constants/sizes";
 import { useClerk, useUser } from "@clerk/clerk-expo";
-import {
-  AntDesign,
-  FontAwesome,
-  MaterialIcons,
-  SimpleLineIcons,
-} from "@expo/vector-icons";
+import { AntDesign, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import * as Linking from "expo-linking";
 import React, { useState } from "react";
 import {
@@ -85,12 +80,22 @@ const Profile = () => {
             }}
           >
             <Text
-              style={{ fontWeight: "bold", fontSize: 20, textAlign: "center" }}
+              style={{
+                fontFamily: "PoppinsBold",
+                fontSize: 20,
+                textAlign: "center",
+              }}
               className="capitalize"
             >
               {user?.username ?? user?.firstName ?? ""}
             </Text>
-            <Text style={{ fontSize: 14, textAlign: "center" }}>
+            <Text
+              style={{
+                fontSize: 14,
+                textAlign: "center",
+                fontFamily: "PoppinsRegular",
+              }}
+            >
               {user?.emailAddresses[0].emailAddress}
             </Text>
           </View>
@@ -106,7 +111,11 @@ const Profile = () => {
             }}
           >
             <Text
-              style={{ fontSize: 16, fontWeight: "bold", color: COLORS.grey }}
+              style={{
+                fontSize: 16,
+                fontFamily: "PoppinsBold",
+                color: COLORS.grey,
+              }}
             >
               Edit Profile
             </Text>
@@ -119,6 +128,7 @@ const Profile = () => {
               marginLeft: MARGIN.medium,
               color: COLORS.black + "90",
               fontSize: 12.5,
+              fontFamily: "PoppinsRegular",
             }}
           >
             Organizer
@@ -159,7 +169,7 @@ const Profile = () => {
                 >
                   <AntDesign name="calendar" size={20} color="black" />
                 </View>
-                <Text style={{ fontSize: 15, fontWeight: "500" }}>
+                <Text style={{ fontSize: 15, fontFamily: "PoppinsMedium" }}>
                   My Events
                 </Text>
               </View>
@@ -203,9 +213,11 @@ const Profile = () => {
                     borderRadius: 10,
                   }}
                 >
-                  <SimpleLineIcons name="support" size={20} color="black" />
+                  <MaterialIcons name="support-agent" size={20} color="black" />
                 </View>
-                <Text style={{ fontSize: 15, fontWeight: "500" }}>Support</Text>
+                <Text style={{ fontSize: 15, fontFamily: "PoppinsMedium" }}>
+                  Support
+                </Text>
               </View>
               <FontAwesome
                 name="chevron-right"
@@ -222,6 +234,7 @@ const Profile = () => {
               marginLeft: MARGIN.medium,
               color: COLORS.black + "90",
               fontSize: 12.5,
+              fontFamily: "PoppinsRegular",
             }}
           >
             Preferences
@@ -262,7 +275,7 @@ const Profile = () => {
                 >
                   <FontAwesome name="bell-o" size={20} color="black" />
                 </View>
-                <Text style={{ fontSize: 15, fontWeight: "500" }}>
+                <Text style={{ fontSize: 15, fontFamily: "PoppinsMedium" }}>
                   Push Notifications
                 </Text>
               </View>
@@ -325,7 +338,7 @@ const Profile = () => {
                     <Text
                       style={{
                         fontSize: 15,
-                        fontWeight: "500",
+                        fontFamily: "PoppinsMedium",
                         color: "#ff0059",
                       }}
                     >

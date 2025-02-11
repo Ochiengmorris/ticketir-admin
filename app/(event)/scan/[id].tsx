@@ -157,7 +157,13 @@ export default function ScanTicket() {
                 {isLoading ? (
                   <ActivityIndicator color={COLORS.white} size={36} />
                 ) : (
-                  <Text style={{ color: COLORS.white, fontSize: 18 }}>
+                  <Text
+                    style={{
+                      color: COLORS.white,
+                      fontSize: 18,
+                      fontFamily: "PoppinsSemiBold",
+                    }}
+                  >
                     Validate Ticket
                   </Text>
                 )}
@@ -171,7 +177,7 @@ export default function ScanTicket() {
                 textAlign: "center",
                 fontSize: 20,
                 marginTop: 20,
-                fontWeight: "bold",
+                fontFamily: "PoppinsSemiBold",
               }}
             >
               Scan a ticket's qr-code to validate
@@ -185,8 +191,8 @@ export default function ScanTicket() {
 
 const Detail = ({ label, value }: { label: string; value: string }) => (
   <View style={{ marginTop: MARGIN.medium }}>
-    <Text>{label}</Text>
-    <Text style={{ fontWeight: "bold", fontSize: 20 }}>{value}</Text>
+    <Text style={{ fontFamily: "PoppinsMedium", fontSize: 16 }}>{label}</Text>
+    <Text style={{ fontFamily: "PoppinsSemiBold", fontSize: 20 }}>{value}</Text>
   </View>
 );
 

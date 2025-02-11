@@ -73,8 +73,8 @@ const EventList = () => {
               style={{
                 marginTop: MARGIN.small,
                 color: COLORS.black + "90",
-                fontWeight: "bold",
                 fontSize: 18,
+                fontFamily: "PoppinsMedium",
               }}
             >
               No events found.

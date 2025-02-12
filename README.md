@@ -1,6 +1,6 @@
 # Umoja Admin
 
-Umoja Admin is a mobile application developed using React Native and Expo, designed to provide administrative functionalities for the Umoja platform.
+Umoja Admin is a mobile application developed using React Native and Expo, designed to provide administrative functionalities for the UmojaTickets platform.
 
 ## Features
 
@@ -14,7 +14,7 @@ Umoja Admin is a mobile application developed using React Native and Expo, desig
 - [React Native](https://reactnative.dev/): A framework for building native apps using React.
 - [Expo](https://expo.dev/): A platform for making React Native development easier.
 - [Convex](https://convex.dev/): A backend platform for data storage and real-time updates.
-- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework for styling.
+- [Nativewind](https://nativewind.com/): A utility-first CSS framework for styling.(Tailwind CSS).
 
 ## Installation
 
@@ -53,7 +53,12 @@ Umoja Admin is a mobile application developed using React Native and Expo, desig
      convex init
      ```
 
-4. **Start the Application**:
+4. **Set Up Clerk**:
+
+   - Sign up for a Clerk account at [Clerk.dev](https://clerk.dev/).
+   - Obtain your Clerk API keys and configure them in your environment variables.
+
+5. **Start the Application**:
 
    ```bash
    expo start
